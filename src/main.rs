@@ -1,10 +1,5 @@
-use clap::{Parser, Subcommand, ValueEnum};
-
-#[derive(Clone, Copy, ValueEnum, Debug)]
-enum Language {
-    Spanish,
-    English,
-}
+use clap::{Parser, Subcommand};
+use no_time_to_read::Language;
 
 #[derive(Debug, Subcommand)]
 enum Commands {
@@ -29,8 +24,8 @@ struct Args {
     #[command(subcommand)]
     command: Commands,
 
-    /// which language the text argument refers
-    #[arg(long, short, value_enum, default_value_t = Language::English, global=true)]
+    /// which language the text/file argument refers
+    #[arg(long, short, value_enum, default_value_t = Language::Spanish, global=true)]
     language: Language,
 }
 
